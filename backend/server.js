@@ -9,7 +9,7 @@ app.use(express.json());
 
 const cors = require("cors");
 app.use(cors({
-  origin: `${process.env.FRONTEND_URL}`,  // Fixed 'origin' typo
+  origin: "https://mern-crud-frontend-xi.vercel.app",  // Fixed 'origin' typo
   methods: ["POST", "GET", "PUT", "DELETE"],
   credentials: true
 }));
