@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { baseUrl } from './BaseUrl';
 
 
 const CraetePost = () => {
@@ -16,7 +15,7 @@ const CraetePost = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     const addIntern  = {name, email, position, experience};
-    const response = await fetch(`${baseUrl}/api/interns`, {
+    const response = await fetch(`/api/interns`, {
       method: "POST",
       body: JSON.stringify(addIntern),
       headers: {

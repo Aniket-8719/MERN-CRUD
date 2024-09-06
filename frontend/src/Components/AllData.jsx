@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import profile from "../assets/3d.jpg"
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { baseUrl } from "./BaseUrl";
+
+
 
 const AllData = () => {
   const[data, setData] = useState();
   const[error, setError] = useState("");
   const getData = async()=>{
-    const response = await fetch(`${baseUrl}/api/interns`);
+    const response = await fetch(`/api/interns`);
     const result = await response.json();
     if(!response.ok){
       console.log(result.error);
@@ -23,7 +24,7 @@ const AllData = () => {
 
   // delete intern
   const handleDelete = async(id)=>{  
-    const response = await fetch(`${baseUrl}/api/interns/${id}`,
+    const response = await fetch(`/api/interns/${id}`,
    { 
     method: "DELETE"
    });
@@ -41,8 +42,7 @@ const AllData = () => {
   }
   useEffect(()=>{
     getData();
-  }, [])
-  console.log(data);
+  }, []);
   return (
     <>
       <h1 className="flex justify-center items-center mt-8 mx-auto text-5xl text-gray-900 font-bold mb-16">

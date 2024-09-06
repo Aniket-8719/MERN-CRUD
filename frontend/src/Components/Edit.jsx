@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { baseUrl } from './BaseUrl';
 
 const Edit = () => {
   const [name, setName] = useState("");
@@ -39,7 +38,7 @@ const Edit = () => {
   const handleUpadte = async(e)=>{
     e.preventDefault();
     const updateIntern = {name, email, position, experience};
-    const response = await fetch(`${baseUrl}/api/interns/${id}`, 
+    const response = await fetch(`/api/interns/${id}`, 
     {
       method: "PUT",
       body: JSON.stringify(updateIntern),
