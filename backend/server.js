@@ -9,7 +9,7 @@ app.use(express.json());
 
 const cors = require("cors");
 app.use(cors({
-  origin: [`${process.env.FRONTEND_URL}`,"http://192.168.0.104:5173"],  // Fixed 'origin' typo
+  origin: `${process.env.FRONTEND_URL}`,  // Fixed 'origin' typo
   methods: ["POST", "GET", "PUT", "DELETE"],
   credentials: true
 }));
