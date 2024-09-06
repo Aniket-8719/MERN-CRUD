@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 const Edit = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const Edit = () => {
 
   // fetch the data to edited form
   const singleInter = async()=>{
-    const response = await fetch(`/api/interns/${id}`);
+    const response = await fetch(`${backendUrl}/api/interns/${id}`);
     const result = await response.json(singleInter);
     if(!response.ok){
       console.log(result.error);
@@ -38,7 +39,7 @@ const Edit = () => {
   const handleUpadte = async(e)=>{
     e.preventDefault();
     const updateIntern = {name, email, position, experience};
-    const response = await fetch(`/api/interns/${id}`, 
+    const response = await fetch(`${backendUrl}/api/interns/${id}`, 
     {
       method: "PUT",
       body: JSON.stringify(updateIntern),

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-
+const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 const CraetePost = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ const CraetePost = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     const addIntern  = {name, email, position, experience};
-    const response = await fetch(`/api/interns`, {
+    const response = await fetch(`${backendUrl}/api/interns`, {
       method: "POST",
       body: JSON.stringify(addIntern),
       headers: {

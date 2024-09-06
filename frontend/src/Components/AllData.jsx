@@ -3,13 +3,17 @@ import profile from "../assets/3d.jpg"
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
+// const backendUrl = window.location.hostname === "localhost" 
+//   ? `${import.meta.env.VITE_BACKEND_BASE_URL}`
+//   : `${import.meta.env.VITE_NETWORK_BACKEND_URL}`;
 
+const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
 const AllData = () => {
   const[data, setData] = useState();
   const[error, setError] = useState("");
   const getData = async()=>{
-    const response = await fetch(`/api/interns`);
+    const response = await fetch(`${backendUrl}/api/interns`);
     const result = await response.json();
     if(!response.ok){
       console.log(result.error);
@@ -24,7 +28,7 @@ const AllData = () => {
 
   // delete intern
   const handleDelete = async(id)=>{  
-    const response = await fetch(`/api/interns/${id}`,
+    const response = await fetch(`${backendUrl}/api/interns/${id}`,
    { 
     method: "DELETE"
    });
